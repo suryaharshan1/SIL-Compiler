@@ -12,8 +12,12 @@ void Ginstall(char* name, int type,int size,struct ArgStruct *Arglist){
     struct Gsymbol *check;
     check = Glookup(name);
     if(check != NULL)	//error on redefining the variable		
-	{yyerror("variable redefined ");printf(" %s",name);exit(0);}
-    struct Gsymbol *temp,*temp1;
+	  {
+        yyerror("variable redefined ");
+        printf(" %s",name);
+        exit(0);
+    }
+    struct Gsymbol *temp;
     temp = (struct Gsymbol *)malloc(sizeof(struct Gsymbol));
     temp->name = (char *)malloc(sizeof(name));
     strcpy(temp->name,name);
@@ -45,11 +49,8 @@ void Ginstall(char* name, int type,int size,struct ArgStruct *Arglist){
    	 Ghead = temp;   	 
    	 return;    
     }
-    temp1 = Ghead;
-    while(temp1->next != NULL){
-   	 temp1 = temp1->next;
-    }
-    temp1->next = temp;
+    temp->next = Ghead;
+    Ghead = temp;
     return;
 }
 
@@ -63,7 +64,7 @@ struct Lsymbol *Llookup(char* name){
 }
 
 void Linstall(char* name, int type,int size){
-    struct Lsymbol *temp,*temp1;
+    struct Lsymbol *temp;
     temp = (struct Lsymbol *)malloc(sizeof(struct Lsymbol));
     temp->name = (char *)malloc(sizeof(name));
     strcpy(temp->name,name);
@@ -92,11 +93,8 @@ void Linstall(char* name, int type,int size){
    	 Lhead = temp;   	 
    	 return;    
     }
-    temp1 = Lhead;
-    while(temp1->next != NULL){
-   	 temp1 = temp1->next;
-    }
-    temp1->next = temp;
+    temp->next = Lhead;
+    Lhead = temp;
     return;    
 }
 
