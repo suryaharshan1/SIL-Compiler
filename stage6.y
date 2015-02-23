@@ -111,6 +111,11 @@ stmt  : ID ASGN expr DELIM  {
 								Gtemp=Glookup($1->NAME);
 								if(Gtemp==NULL){
 									yyerror("undefined variable ");printf("%s",$1->NAME);exit(0);}	
+								else if(Gtemp->type == STYPE_ARR_INT || Gtemp->type == STYPE_ARR_BOOLEAN){
+									yyerror("invalid reference to an array ");
+									printf("%s",$1->NAME);
+									exit(0);
+								}
 								else $1->Gentry=Gtemp;
 								$$ = TreeCreate(TYPE_VOID,NODETYPE_ASGN,0,NULL,NULL,$1,$3,NULL);
 							}
@@ -118,6 +123,11 @@ stmt  : ID ASGN expr DELIM  {
 											Gtemp=Glookup($1->NAME);
 											if(Gtemp==NULL){
 												yyerror("undefined variable ");printf("%s",$1->NAME);exit(0);}	
+											else if(Gtemp->type == STYPE_INT || Gtemp->type == STYPE_BOOLEAN){
+												yyerror("invalid reference to a variable ");
+												printf("%s",$1->NAME);
+												exit(0);		
+											}
 											else $1->Gentry=Gtemp;
 											$$ = TreeCreate(TYPE_VOID,NODETYPE_ARR_ASGN,0,NULL,NULL,$1,$3,$6);
 										}
@@ -125,6 +135,11 @@ stmt  : ID ASGN expr DELIM  {
 											Gtemp=Glookup($3->NAME);
 											if(Gtemp==NULL){
 												yyerror("undefined variable ");printf("%s",$3->NAME);exit(0);}	
+											else if(Gtemp->type == STYPE_ARR_INT || Gtemp->type == STYPE_ARR_BOOLEAN){
+												yyerror("invalid reference to an array ");
+												printf("%s",$1->NAME);
+												exit(0);
+											}
 											else 
 												$3->Gentry=Gtemp;
 											$$ = TreeCreate(TYPE_VOID,NODETYPE_READ,0,NULL,NULL,$3,NULL,NULL);
@@ -133,6 +148,11 @@ stmt  : ID ASGN expr DELIM  {
 												Gtemp=Glookup($3->NAME);
 												if(Gtemp==NULL){
 													yyerror("undefined variable ");printf("%s",$3->NAME);exit(0);}	
+												else if(Gtemp->type == STYPE_INT || Gtemp->type == STYPE_BOOLEAN){
+													yyerror("invalid reference to a variable ");
+													printf("%s",$3->NAME);
+													exit(0);		
+												}
 												else 
 													$3->Gentry=Gtemp;
 												$$ = TreeCreate(TYPE_VOID,NODETYPE_ARR_READ,0,NULL,NULL,$3,$5,NULL);
