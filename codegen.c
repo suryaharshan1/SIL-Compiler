@@ -176,10 +176,10 @@ int gen_code_eval(struct Tnode *tree){
 				case NODETYPE_IF:
 					i = gen_code_eval(tree->Ptr1);
 					j = get_label();
-					k = get_label();
 					fprintf(fp, "JZ R%d L%d\n",i,j);
 					gen_code_eval(tree->Ptr2);
 					if(tree->Ptr3 != NULL){	
+						k = get_label();
 						fprintf(fp,"JMP L%d\n",k);
 						fprintf(fp,"L%d:\n",j);
 						gen_code_eval(tree->Ptr3);
