@@ -1,0 +1,3 @@
+a=3;b=2;read(c);write(a+b+c);while(a<6) do write(a+c); a=a+1; endwhile;if(a>6) then write(a+b+c); else write(2*a+2*b+2*c); endif; 
+
+
