@@ -1,0 +1,22 @@
+decl
+integer ad,a,b,c,print(integer a);
+enddecl
+
+integer print(integer a){
+	decl
+	enddecl
+	begin
+		write(a);
+	end
+}	
+
+integer main()
+{	
+	decl
+		integer a,b,c;
+	enddecl
+	begin	
+	print(10);
+	return 1;
+	end
+}

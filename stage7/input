@@ -1,0 +1,36 @@
+decl
+integer ac,bc,ad[3],i;
+boolean vis[2];
+enddecl
+ac=3;
+bc=3;
+write(ac);
+write(ac*bc);
+ad[2]=50;
+write(ad[2]);
+read(ad[0]);
+write(ad[0]);
+write(ad[1]);
+if(ad[1]==1) then
+	while(i<3) do
+		write(ad[i]);
+		i = i + 1;
+	endwhile;
+else
+	write(ad[0]+ad[1]+ad[2]);
+endif;
+i=0;
+read(vis[1]);
+write(vis[0]);
+if (vis[1] == true) then
+	while(i<=2) do
+		write(ad[i]);
+		i = i + 1;
+	endwhile;
+	write(ad[0]+ad[1]+ad[2]);
+endif;
+while(false) do
+	write(i);
+	i = i+1;
+endwhile;
+
