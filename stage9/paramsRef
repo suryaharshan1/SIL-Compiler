@@ -1,0 +1,37 @@
+decl
+	integer a,function1(integer &a),function2(integer &b);
+enddecl
+
+integer function1(integer &a){
+	decl
+		integer temp1;
+	enddecl
+	begin
+		a = a + 2;
+		temp1 = function2(a);
+		return 1;
+	end
+}
+
+integer function2(integer &b){
+	decl
+	enddecl
+	begin
+		b = b * 3;
+		return 1;
+	end
+}
+
+integer main(){
+	decl
+		integer c,temp1,temp2;
+	enddecl
+	begin 
+		read(c);
+		temp1 = function1(c);
+		write(c);
+		return 1;
+	end
+}
+
+

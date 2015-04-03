@@ -1,0 +1,46 @@
+decl
+	integer maxi(integer a,b;integer c); 
+enddecl
+integer maxi(integer a,b;integer c){
+	decl
+		integer maximum;
+	enddecl
+	begin
+	if(a >= b) then
+		if(b>=c) then
+			maximum = a;
+		else
+			if(c>=a) then
+				maximum = c;			
+			else
+				maximum = a;
+			endif;
+		endif;
+	else
+			if(a>=c) then
+				maximum = b;
+			else
+				if(c>=b) then
+					maximum = c;
+				else
+					maximum = b;
+				endif;
+			endif;
+	endif;
+	return maximum;
+	end
+}
+integer main(){
+	decl
+		integer a,b,c;
+	enddecl	
+	begin	
+	read(a);
+	read(b);
+	read(c);
+	write(maxi(a,b,c));
+	return 1;	
+	end
+	
+}
+

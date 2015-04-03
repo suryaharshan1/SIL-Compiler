@@ -1,0 +1,30 @@
+decl
+	integer function(integer x);
+enddecl
+integer function(integer x){
+	decl
+		integer result;
+	enddecl
+	begin
+		if(x >= 91) then
+			result = 91;
+		else
+			result = function(function(x+10));
+		endif;
+		return result;
+	end
+}
+integer main(){
+	decl
+		integer n,i;
+	enddecl
+	begin
+		read(n);
+		i = 0;
+		while(i <= n) do
+			write(function(i));
+			i = i+1;
+		endwhile;
+		return 0;
+	end
+}

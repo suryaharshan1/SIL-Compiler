@@ -1,0 +1,39 @@
+decl
+	integer prime(integer n),g;
+enddecl
+integer prime(integer n)
+{
+	decl
+		integer f,ret;
+	enddecl
+    begin
+	f = 2;
+	while ((f < n) && (n%f != 0)) do
+		f = f + 1;
+	endwhile;
+	if(f == n) then
+		ret = 1;
+	else
+		ret = 0;
+	endif;
+	return ret;
+	end
+}
+integer main()
+{
+	decl
+		integer i,check;
+	enddecl
+    begin
+	read(g);
+	i = 2;
+	while(i <= g) do
+		check = prime(i);
+		if (check == 1) then
+			write(i);
+		endif;
+		i = i + 1;
+	endwhile;
+	return 0;
+	end
+}
